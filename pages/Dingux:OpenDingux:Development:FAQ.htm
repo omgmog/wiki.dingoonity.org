@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Dingux:OpenDingux:Development:FAQ</title>
+</head>
+
+<body>
+    <div id="content" class="mw-body" role="main">
+    <table id="toc" class="toc">
+        <tr>
+            <td>
+                <div id="toctitle">
+                    <h2>Contents</h2>
+                </div>
+                <ul>
+                    <li class="toclevel-1 tocsection-1"><a href="#Where_can_I_download_the_latest_release_of_OpenDingux.3F"><span class="tocnumber">1</span> <span class="toctext">Where can I download the latest release of OpenDingux?</span></a></li>
+                    <li class="toclevel-1 tocsection-2"><a href="#How_to_enable_double_buffering.3F"><span class="tocnumber">2</span> <span class="toctext">How to enable double buffering?</span></a>
+                        <ul>
+                            <li class="toclevel-2 tocsection-3"><a href="#Using_SDL"><span class="tocnumber">2.1</span> <span class="toctext">Using SDL</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="toclevel-1 tocsection-4"><a href="#Why_does_my_application_fail_to_start.3F"><span class="tocnumber">3</span> <span class="toctext">Why does my application fail to start?</span></a></li>
+                    <li class="toclevel-1 tocsection-5"><a href="#How_to_port_applications_which_use_OSS_for_the_sound.3F"><span class="tocnumber">4</span> <span class="toctext">How to port applications which use OSS for the sound?</span></a></li>
+                    <li class="toclevel-1 tocsection-6"><a href="#My_app_does_not_work_correctly_when_launched_from_the_NAND"><span class="tocnumber">5</span> <span class="toctext">My app does not work correctly when launched from the NAND</span></a></li>
+                    <li class="toclevel-1 tocsection-7"><a href="#My_app_does_not_use_all_of_that.2C_and_it.27s_still_crashing"><span class="tocnumber">6</span> <span class="toctext">My app does not use all of that, and it's still crashing</span></a></li>
+                    <li class="toclevel-1 tocsection-8"><a href="#What_are_the_best_flags_to_use_when_compiling.3F"><span class="tocnumber">7</span> <span class="toctext">What are the best flags to use when compiling?</span></a></li>
+                    <li class="toclevel-1 tocsection-9"><a href="#Do_I_need_a_specific_toolchain.3F"><span class="tocnumber">8</span> <span class="toctext">Do I need a specific toolchain?</span></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <script>
+        if (window.showTocToggle) {
+            var tocShowText = "show";
+            var tocHideText = "hide";
+            showTocToggle();
+        }
+    </script>
+    <h1> <span class="mw-headline" id="Where_can_I_download_the_latest_release_of_OpenDingux.3F"> Where can I download the latest release of OpenDingux? </span></h1>
+    <p>The latest stable release can be downloaded on <a href="http://www.treewalker.org/opendingux/" class="external text" rel="nofollow">the OpenDingux Releases</a> page.
+    </p>
+    <h1> <span class="mw-headline" id="How_to_enable_double_buffering.3F"> How to enable double buffering? </span></h1>
+    <h2> <span class="mw-headline" id="Using_SDL"> Using SDL </span></h2>
+    <p>To enable double buffering on your own app, it's as easy as adding one flag to your SDL_SetVideoMode() function:
+    </p>
+    <pre>
+SDL_Surface *s = SDL_SetVideoMode(width, height, bpp, SDL_HWSURFACE | SDL_DOUBLEBUF);
+</pre>
+    <p>Note that double buffering requires hardware surfaces, so you do need to use SDL_HWSURFACE instead of SDL_SWSURFACE.
+    </p>
+    <p>When a program that uses single buffering finishes a frame, it can call either SDL_UpdateRect or SDL_Flip, but when using double buffering it must use SDL_Flip.
+    </p>
+    <h1> <span class="mw-headline" id="Why_does_my_application_fail_to_start.3F"> Why does my application fail to start? </span></h1>
+    <p>If your application fails to start on OpenDingux, and works fine on legacy Dingux kernel, you may need to adapt your source code.
+    </p>
+    <p>There are four main issues you may encounter:
+    </p>
+    <dl>
+        <dd>
+            <ul>
+                <li> your program uses <b>/dev/mem</b>, which has been disabled on OpenDingux. The main use of that file on legacy kernels was to change the CPU frequency. Your program shouldn't have to change the frequency; it wouldn't be very portable. The users can choose the frequency directly from GMenu2X.
+                </li>
+                <li> Your program uses <b>/proc/jz</b>, which also has been removed. That non-standard directory was present on Ingenic's kernel, on which booboo's is based on. It did allow to change settings like backlight brightness. Now that the power switch daemon takes care of all those settings, your application shouldn't have to mess with them.
+                </li>
+                <li> Your program uses OSS directly for the sound. OSS has been deprecated for years, recent apps really shouldn't use it. It has been disabled on OpenDingux.
+                </li>
+                <li> Your program uses SDL for the sound, but has been compiled statically with an old build of SDL. You should <b>never</b> compile your apps statically, but rather dynamically. Statically linked app are compiled with the flag <b>-static</b> on GCC's command line; just remove that flag and re-compile your app.
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <h1> <span class="mw-headline" id="How_to_port_applications_which_use_OSS_for_the_sound.3F"> How to port applications which use OSS for the sound? </span></h1>
+    <p>OpenDingux does not support OSS anymore. Thus, it is necessary to modify the applications using OSS. For that task, we introduced a library named libAO, which will make porting your application almost trivial. LibAO is a generic interface, that your app can use to output sound on different sound systems, including OSS, ALSA, SDL, PulseAudio...
+    </p>
+    <p>Porting your application to libAO is fairly easy; only three small parts of your code needs to be modified.
+    </p>
+    <p>First, initialization of the sound system:
+    </p>
+    <dl>
+        <dd>
+            <ul>
+                <li> OSS:
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <pre>
+int fd = open(&quot;/dev/dsp&quot;, O_WRONLY);
+</pre>
+    <dl>
+        <dd>
+            <ul>
+                <li> libAO:
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <pre>
+#include &lt;ao/ao.h&gt;
+
+ao_device *ao_dev;
+ao_initialize();
+</pre>
+    <p>Then, we set the parameters (channels, frequency...) we want:
+    </p>
+    <dl>
+        <dd>
+            <ul>
+                <li> OSS:
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <pre>
+ioctl(fd, SNDCTL_DSP_SPEED, &amp;rate);
+ioctl(fd, SNDCTL_DSP_SETFMT, &amp;bits);
+ioctl(fd, SNDCTL_DSP_STEREO, &amp;stereo);
+</pre>
+    <dl>
+        <dd>
+            <ul>
+                <li> libAO:
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <pre>
+ao_sample_format ao = { bits, rate, stereo+1, AO_FMT_LITTLE, NULL, };
+ao_dev = ao_open_live(ao_default_driver_id(), &amp;ao, NULL);
+</pre>
+    <p>That last piece of code is executed when you want to output samples data:
+    </p>
+    <dl>
+        <dd>
+            <ul>
+                <li> OSS:
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <pre>
+write(fd, buff, len);
+</pre>
+    <dl>
+        <dd>
+            <ul>
+                <li> libAO:
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <pre>
+ao_play(ao_dev, buff, len);
+</pre>
+    <p>Compile your application with <b>-lao</b>, and voila! Your OSS-only app is now able to use libAO, and will gladly work on OpenDingux.
+    </p>
+    <h1> <span class="mw-headline" id="My_app_does_not_work_correctly_when_launched_from_the_NAND"> My app does not work correctly when launched from the NAND </span></h1>
+    <p>OpenDingux has read-only access to the NAND. Perhaps your application assumes it can write to its installation location? This is a bad practice, please write to the user's home directory ($HOME) instead.
+    </p>
+    <h1> <span class="mw-headline" id="My_app_does_not_use_all_of_that.2C_and_it.27s_still_crashing"> My app does not use all of that, and it's still crashing </span></h1>
+    <p>You can use the "strace" command to see the system calls the application does before crashing. Often a crash is a result of an improperly handled error, so look for calls that return non-success error codes and check how the source deals with that.
+    </p>
+    <h1> <span class="mw-headline" id="What_are_the_best_flags_to_use_when_compiling.3F"> What are the best flags to use when compiling? </span></h1>
+    <p>The JZ4740 does not have a lot of dcache (16kB) and icache (16kB). As such, it's generally a bad idea to increase the size of the binary using flags like -funroll-loops.
+    </p>
+    <p>Here are optimization flags that should work well on the dingoo:
+    </p>
+    <pre>
+CFLAGS = -O2 -fomit-frame-pointer -ffunction-sections -ffast-math -fsingle-precision-constant -G0
+LDFLAGS = -Wl,--gc-sections
+</pre>
+    <p>The following flags are for C++ only; they can bring some performance, or some instability.
+    </p>
+    <pre>
+CPPFLAGS = -fno-exceptions -fno-rtti
+</pre>
+    <p>The following flags are very experimental on MIPS. They can bring some performance, but can also be a real bottleneck. Use with caution.
+    </p>
+    <pre>
+CFLAGS = -flto -fwhole-program
+LDFLAGS = $(CFLAGS)
+</pre>
+    <h1> <span class="mw-headline" id="Do_I_need_a_specific_toolchain.3F"> Do I need a specific toolchain? </span></h1>
+    <p>If you want to use libraries that are included with OpenDingux and not in the legacy Dingux, such as LibAO, you need to install the OpenDingux toolchain. If you want to target both OpenDingux and legacy Dingux, you can use booboo's toolchain.
+    </p>
+
+
+    </div>
+</body>
+<html>

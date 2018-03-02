@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Development:TipsNTricks</title>
+</head>
+
+<body>
+    <div id="content" class="mw-body" role="main">
+    <p><b>Setting volume (set volume in "volume" variable)</b>
+    </p>
+    <pre>
+ #include &lt;sys/ioctl.h&gt;
+ #include &lt;sys/soundcard.h&gt;
+ #include &lt;stdio.h&gt;
+
+ [...]
+ long mixer;
+ int realVol = (this-&gt;volume &lt;&lt; 8) + this-&gt;volume; /* 0 &lt; volume &lt; 255 */
+ mixer = open(&quot;/dev/mixer&quot;, O_RDWR);
+
+ if (mixer&nbsp;!= -1) {
+    ioctl(mixer, SOUND_MIXER_WRITE_VOLUME , &amp;realVol);
+    close(mixer);
+ }
+
+</pre>
+    <p><b>Reading battery (stores value in "currentval")</b>
+    </p>
+    <pre>
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdio.h&gt;
+ [...]
+ static FILE* devbatt_;
+ static char* strval;
+ static size_t n;
+ static size_t t;
+ [...]
+ devbatt_ = fopen(&quot;/proc/jz/battery&quot;, &quot;r&quot;);
+ n = 4;
+ t = sizeof(char);
+ strval = (char*)malloc((size_t)10*sizeof(char));
+ [...]
+ unsigned short currentval = 0;
+ fseek (devbatt_, 0, SEEK_SET);
+ fread (strval, t, n, devbatt_);
+ currentval = atoi(strval);
+
+ if (currentval &gt; 4000) {
+   currentval = 4000;
+ } else if (currentval &lt; 3000) {
+   currentval = 3000;
+ }
+
+ lastBattLevel_= ((currentval-3000)/10);
+ [...]
+ fclose (devbatt_);
+
+</pre>
+
+
+
+    </div>
+</body>
+<html>

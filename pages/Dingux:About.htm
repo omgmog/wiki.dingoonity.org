@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Dingux:About</title>
+</head>
+
+<body>
+    <div id="content" class="mw-body" role="main">
+    <table width="320px" align="right" cellpadding="0px" cellspacing="1px">
+
+        <tr bgcolor="lightblue">
+            <th colspan="2"> <i>Dingoo-Linux</i>
+            </th>
+        </tr>
+        <tr>
+            <td colspan="2"> <a href="/index.php?title=Special:Upload&amp;wpDestFile=Dingux.JPG" class="new" title="File:Dingux.JPG">320px</a>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px" bgcolor="lightblue"> <b>Platform(s):</b> </td>
+            <td> Base Hardware
+            </td>
+        </tr>
+        <tr>
+            <td width="100px" bgcolor="lightblue"> <b>Download(s):</b> </td>
+            <td> <a href="http://code.google.com/p/dingoo-linux/downloads/list" class="external text" rel="nofollow">Google Code download page</a>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px" bgcolor="lightblue"> <b>Developer(s):</b> </td>
+            <td> <a href="http://dingoo-linux.blogspot.com" class="external text" rel="nofollow">booboo</a>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px" bgcolor="lightblue"> <b>Version:</b> </td>
+            <td> 20090916 (dual-boot installer), 20091022 (kernel and rootfs)
+            </td>
+        </tr>
+        <tr>
+            <td width="100px" bgcolor="lightblue"> <b>Status:</b> </td>
+            <td> Released, early in development
+            </td>
+        </tr>
+        <tr>
+            <td width="100px" bgcolor="lightblue"> <b>Homepage:</b> </td>
+            <td> <a href="http://code.google.com/p/dingoo-linux" class="external text" rel="nofollow">Google Code project page</a>
+            </td>
+        </tr>
+    </table>
+    <p><b>Dingoo-Linux</b> (aka <b>Dingux</b>) is a firmware for the Dingoo A320 intended for providing a working linux kernel upon which developers can build applications easier and faster.
+    </p>
+    <table id="toc" class="toc">
+        <tr>
+            <td>
+                <div id="toctitle">
+                    <h2>Contents</h2>
+                </div>
+                <ul>
+                    <li class="toclevel-1 tocsection-1"><a href="#History"><span class="tocnumber">1</span> <span class="toctext">History</span></a></li>
+                    <li class="toclevel-1 tocsection-2"><a href="#Dingux_Setup"><span class="tocnumber">2</span> <span class="toctext">Dingux Setup</span></a>
+                        <ul>
+                            <li class="toclevel-2 tocsection-3"><a href="#Necessary_Files"><span class="tocnumber">2.1</span> <span class="toctext">Necessary Files</span></a></li>
+                            <li class="toclevel-2 tocsection-4"><a href="#Installing_the_firmware"><span class="tocnumber">2.2</span> <span class="toctext">Installing the firmware</span></a>
+                                <ul>
+                                    <li class="toclevel-3 tocsection-5"><a href="#Linux.2FOS_X_instructions"><span class="tocnumber">2.2.1</span> <span class="toctext">Linux/OS X instructions</span></a></li>
+                                    <li class="toclevel-3 tocsection-6"><a href="#Windows_instructions"><span class="tocnumber">2.2.2</span> <span class="toctext">Windows instructions</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="toclevel-2 tocsection-7"><a href="#Set_up_the_miniSD_card"><span class="tocnumber">2.3</span> <span class="toctext">Set up the miniSD card</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="toclevel-1 tocsection-8"><a href="#Troubleshooting"><span class="tocnumber">3</span> <span class="toctext">Troubleshooting</span></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <script>
+        if (window.showTocToggle) {
+            var tocShowText = "show";
+            var tocHideText = "hide";
+            showTocToggle();
+        }
+    </script>
+    <h2> <span class="mw-headline" id="History">History</span></h2>
+    <p>The included SDK for the Dingoo A320, the S2DSDK, is not considered a very good platform for development. Dingoo-Linux provides a working kernel with good hardware support, so that applications can be developed using the hardware abstraction layer linux provides. The hope is that applications will be much easier to port and run upon the release of a dual-boot version of the firmware.
+    </p>
+    <h2> <span class="mw-headline" id="Dingux_Setup">Dingux Setup</span></h2>
+    <h3> <span class="mw-headline" id="Necessary_Files">Necessary Files</span></h3>
+    <p>The following files need to be downloaded:
+    </p>
+    <ol>
+        <li><a href="http://dingoo-linux.googlecode.com/files/dingux_dual_boot_installer_20110420.zip" class="external text" rel="nofollow">Dual-Boot Firmware Installer</a>
+        </li>
+        <li><a href="http://sience.schattenkind.net/dingoo/dingux_kernel_110706_by_SiENcE.zip" class="external text" rel="nofollow">Dingux kernel (by SiENcE)</a>
+        </li>
+        <li><a href="http://hkzlab.ipv7.net/files/misc/dingux/normal_dingux/rootfs_elta_fixtremor.zip" class="external text" rel="nofollow">Root file system (by Elta)</a>
+        </li>
+        <li><a href="http://boards.dingoonity.org/dingux-games-and-homebrew/" class="external text" rel="nofollow">Latest Dingux local Pack</a> (look in Dingoonity Forum for a newer Version!) - contains games, emulators, ports... This is constantly updated]
+        </li>
+    </ol>
+    <h3> <span class="mw-headline" id="Installing_the_firmware"> Installing the firmware </span></h3>
+    <p>Find out the model of your LCD controller by turning on your Dingoo, going to the about page, and hitting "Up, right, down, up, right, down". You'll see the model number (either ILI93<b>25</b>, ILI93<b>31</b> or ILI93<b>38</b>). Remember this, or write it down!
+    </p>
+    <p>There are two modes in which the Dingoo can be connected via USB cable: USB mode (copying files - default, not what we need) and RockBox (flashing - that's what we need).
+    </p>
+    <p>To get into Rockbox mode for flashing:
+    </p>
+    <ol>
+        <li> Plug USB cord into Dingoo/PC, let Dingoo boot up. You are now in USB mode.
+        </li>
+        <li> Hold B button and push power switch up until the screen goes blank.
+        </li>
+        <li> You are now in RockBox mode, install drivers from Dual boot folder. You are ready to flash!
+        </li>
+    </ol>
+    <p>At this point, in RockBox mode, you will not be able to power off the Dingoo. This is a good test to ensure you are in the correct mode. To exit out of RockBox mode, simply reset via the reset hole/pin/button
+    </p>
+    <h4> <span class="mw-headline" id="Linux.2FOS_X_instructions"> Linux/OS X instructions </span></h4>
+    <p>Extract the <b>2. Dual-Boot Firmware Installer</b>.
+    </p>
+    <p>Run "chmod +x" on the usbtool (usbtool-linux or usbtool-osx) file (to make it executable) and run the following commands (as root):
+    </p>
+    <p>Replace zImage_dual_boot_installer_ILI93XX with <b>zImage_dual_boot_installer_ILI9331</b>, if your Dingoo has that ILI9331 LCD model!<br /> Replace zImage_dual_boot_installer_ILI93XX with <b>zImage_dual_boot_installer_ILI9325</b>, if your Dingoo has that ILI9325 LCD model!<br /> Replace zImage_dual_boot_installer_ILI93XX with <b>zImage_dual_boot_installer_ILI9338</b>, if your Dingoo has that ILI9338 LCD model!
+    </p>
+    <pre>./usbtool 1 hwinit.bin 0x80000000
+./usbtool 1 zImage_dual_boot_installer_ILI93XX 0x80600000
+</pre>
+    <p><br /> Your Dingoo should now show the dual-boot installer running. Once it's done, it should reboot and you should see the Dingux splash screen.
+    </p>
+    <p>Now, we'll set up your MiniSD card.
+    </p>
+    <h4> <span class="mw-headline" id="Windows_instructions"> Windows instructions </span></h4>
+    <p>Extract the <b>2. Dual-Boot Firmware Installer</b>.
+    </p>
+    <p>Open the command prompt, cd to the directory containing the dual-boot installer files and run the following commands:
+    </p>
+    <p>Replace zImage_dual_boot_installer_ILI93XX with <b>zImage_dual_boot_installer_ILI9331</b>, if your Dingoo has that ILI9331 LCD model!<br /> Replace zImage_dual_boot_installer_ILI93XX with <b>zImage_dual_boot_installer_ILI9325</b>, if your Dingoo has that ILI9325 LCD model!<br /> Replace zImage_dual_boot_installer_ILI93XX with <b>zImage_dual_boot_installer_ILI9338</b>, if your Dingoo has that ILI9338 LCD model!
+    </p>
+    <pre>usbtool-win.exe 1 hwinit.bin 0x80000000
+usbtool-win.exe 1 zImage_dual_boot_installer_ILI93XX 0x80600000
+</pre>
+    <p>Your Dingoo should now show the dual-boot installer running. Once it's done, it should reboot and you should see the Dingux splash screen.
+    </p>
+    <p>Turn your Dingoo OFF.
+    </p>
+    <p>Now, we'll set up your MiniSD card!
+    </p>
+    <h3> <span class="mw-headline" id="Set_up_the_miniSD_card">Set up the miniSD card</span></h3>
+    <ol>
+        <li> Make sure the card is empty, format it if necessary.
+            <ul>
+                <li> Linux: <a href="http://www.ehow.com/how_4810735_format-sd-card-linux.html" class="external text" rel="nofollow">Click</a>
+                </li>
+                <li> Windows: Right-click the SD Device icon and select "Format" (Fat32)
+                </li>
+                <li> OS X: <a href="http://www.ehow.com/how_4794433_format-sd-card-mac.html" class="external text" rel="nofollow">Click</a> (Note: Mac OS X may not format your card with the proper partition. If you receive an error when attempting to boot, try reformatting the card under Windows.)
+                </li>
+            </ul>
+        </li>
+        <li> Copy the the zImage file (from <b>2. Dingux System (by SiENcE)</b>) matching your LCD controller to SD card's root (not into a subdirectory) and rename it to "zImage".
+        </li>
+        <li> Copy "rootfs" (from <b>3. Root file system (by Elta)</b>) to the root of your SD card.
+        </li>
+        <li> Download and extract the <a href="http://boards.dingoonity.org/dingux-games-and-homebrew/dingux-local-pack-v0-35-31-05-2010/" class="external text" rel="nofollow">local pack</a> and then copy local/ onto the SD card.
+        </li>
+    </ol>
+    <p>Insert SD-Card in your Dingoo.
+    </p>
+    <p>Your basic Dingux installation is now complete!
+    </p>
+    <p>Press the SELECT BUTTON and POWER ON the Dingoo to start DINGUX.
+    </p>
+    <p>To start NativOS just POWER ON.
+    </p>
+    <h2> <span class="mw-headline" id="Troubleshooting"> Troubleshooting </span></h2>
+    <ul>
+        <li> <a href="http://boards.dingoonity.org/dingux-help/dingoo-and-dingux-troubleshooting-and-faq-guide/msg3369/#msg3369" class="external free" rel="nofollow">http://boards.dingoonity.org/dingux-help/dingoo-and-dingux-troubleshooting-and-faq-guide/msg3369/#msg3369</a>
+        </li>
+    </ul>
+
+
+
+    </div>
+</body>
+<html>
