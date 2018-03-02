@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Gmenu2x</title>
+</head>
+
+<body>
+    <table id="toc" class="toc">
+        <tr>
+            <td>
+                <div id="toctitle">
+                    <h2>Contents</h2>
+                </div>
+                <ul>
+                    <li class="toclevel-1 tocsection-1"><a href="#What_is_Gmenu2x.3F"><span class="tocnumber">1</span> <span class="toctext">What is Gmenu2x?</span></a></li>
+                    <li class="toclevel-1 tocsection-2"><a href="#The_Dingoo_Port"><span class="tocnumber">2</span> <span class="toctext">The Dingoo Port</span></a></li>
+                    <li class="toclevel-1 tocsection-3"><a href="#FAQ"><span class="tocnumber">3</span> <span class="toctext">FAQ</span></a>
+                        <ul>
+                            <li class="toclevel-2 tocsection-4"><a href="#How_do_i_install_it"><span class="tocnumber">3.1</span> <span class="toctext">How do i install it</span></a></li>
+                            <li class="toclevel-2 tocsection-5"><a href="#Im_generaly_confused_on_getting_all_the_links_set_up.2CWill_I_have_to_find_icons_for_all_the_files_or_is_there_another_way.3F"><span class="tocnumber">3.2</span> <span class="toctext">Im generaly confused on getting all the links set up,Will I have to find icons for all the files or is there another way?</span></a></li>
+                            <li class="toclevel-2 tocsection-6"><a href="#When_I_do_assign_an_icon_I_can_only_see_a_portion_of_it.2C_is_there_a_way_to_fix_that.3F"><span class="tocnumber">3.3</span> <span class="toctext">When I do assign an icon I can only see a portion of it, is there a way to fix that?</span></a></li>
+                            <li class="toclevel-2 tocsection-7"><a href="#Where_do_i_get_the_poweroff.2C_reboot_and_main_scripts_.3F"><span class="tocnumber">3.4</span> <span class="toctext">Where do i get the poweroff, reboot and main scripts&nbsp;?</span></a></li>
+                            <li class="toclevel-2 tocsection-8"><a href="#Can_i_use_both_dmenu_and_gmenu2x_.28or_another_menu.29_at_the_same_time_.3F"><span class="tocnumber">3.5</span> <span class="toctext">Can i use both dmenu and gmenu2x (or another menu) at the same time&nbsp;?</span></a></li>
+                            <li class="toclevel-2 tocsection-9"><a href="#Is_it_possible_to_add_icons_for_a_.22new_section.22_.3F_.28sections_.3D_the_icons_on_the_top_bar.29"><span class="tocnumber">3.6</span> <span class="toctext">Is it possible to add icons for a "new section"&nbsp;? (sections = the icons on the top bar)</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <script>
+        if (window.showTocToggle) {
+            var tocShowText = "show";
+            var tocHideText = "hide";
+            showTocToggle();
+        }
+    </script>
+    <h2> <span class="mw-headline" id="What_is_Gmenu2x.3F"> What is Gmenu2x? </span></h2>
+    <p>GMenu2X is a frontend application targeted at embedded devices, originally developed for the GP2X and successively ported to other devices. GMenu2X provides an easy to use interface with quick access to the games and applications of the device trough links similar to those found on PC's desktops. Its interface is fully customizable with skins. Other features include: built-in selector for emulators, manuals and readmes integration, built-in overclocker, gamma and volume configuration, ram timings tweaker.
+    </p>
+    <h2> <span class="mw-headline" id="The_Dingoo_Port"> The Dingoo Port </span></h2>
+    <div class="floatright"><a href="/index.php?title=File:Gmenu2X.png" class="image"><img alt="Gmenu2X.png" src="/images/1/1f/Gmenu2X.png" width="320" height="240" /></a></div>
+    <p>Gmenu2x was ported to Dingux by Joyrider, notes from his release thread:
+    </p>
+    <dl>
+        <dd> I ported gmenu2x to dingux, it has all the features of the original gp2x menu working and I fixed 2 small bugs in the original code (dealing with new links that didn't show correctly). I also added battery reading and a LCD Backlight setting, made the volume changing work and a few other things.
+        </dd>
+        <dd>
+        </dd>
+        <dd>
+        </dd>
+        <dd> the menu needs to be placed in local\gmenu2x (on the sd card, and no other place, the zip already contains the gmenu2x folder so just extract to \local).
+        </dd>
+        <dd>
+        </dd>
+        <dd>
+        </dd>
+        <dd> You'll also have to edit the /boot/local/sbin/main script if you want this to be your default menu&nbsp;! (\loca\sbin\main if from the sd cards point of view)
+        </dd>
+        <dd>
+        </dd>
+        <dd>
+        </dd>
+        <dd> the scanning feature looks for *.dge files, if you have games / applications with another extension you'll have to add it manually (in the menu itself, not through config files )
+        </dd>
+    </dl>
+    <p>Discussion thread on Dingoonity
+    </p>
+    <ul>
+        <li> <a href="http://boards.dingoonity.org/dingux-releases/gmenu2x-for-dingux-!/" class="external free" rel="nofollow">http://boards.dingoonity.org/dingux-releases/gmenu2x-for-dingux-!/</a>
+        </li>
+    </ul>
+    <p>Download:
+    </p>
+    <ul>
+        <li> <a href="http://dl.openhandhelds.org/cgi-bin/dingoo.cgi?0,0,0,0,116,260" class="external free" rel="nofollow">http://dl.openhandhelds.org/cgi-bin/dingoo.cgi?0,0,0,0,116,260</a>
+        </li>
+    </ul>
+    <p>Sources:
+    </p>
+    <ul>
+        <li> <a href="http://dl.openhandhelds.org/cgi-bin/dingoo.cgi?0,0,0,0,46,261" class="external free" rel="nofollow">http://dl.openhandhelds.org/cgi-bin/dingoo.cgi?0,0,0,0,46,261</a>
+        </li>
+    </ul>
+    <p>Documentation:
+    </p>
+    <ul>
+        <li> <a href="http://gmenu2x.sourceforge.net/page/Documentation" class="external free" rel="nofollow">http://gmenu2x.sourceforge.net/page/Documentation</a>
+        </li>
+    </ul>
+    <h2> <span class="mw-headline" id="FAQ"> FAQ </span></h2>
+    <h3> <span class="mw-headline" id="How_do_i_install_it"> How do i install it </span></h3>
+    <p>first, Extract the gmenu2x.zip file to the "local" folder on your SD card, the dingoo sees this directory as /boot/local/gmenu2x , secondly get the main script (see further in this faq) and place it in "local\sbin" on your sd card, the dingoo sees this directory as /boot/local/sbin
+    </p>
+    <h3> <span class="mw-headline" id="Im_generaly_confused_on_getting_all_the_links_set_up.2CWill_I_have_to_find_icons_for_all_the_files_or_is_there_another_way.3F"> Im generaly confused on getting all the links set up,Will I have to find icons for all the files or is there another way? </span></h3>
+    <p>at first press select then choose the last option (the scanner thing), this will search your sd card starting from /boot/local (\local on the sd) for *.dge files and will automaticly add them in a temporary "found dge" folder afterwards edit the links in the found dge folder and move them to the sections you like (like emulators, games, etc).
+    </p>
+    <h3> <span class="mw-headline" id="When_I_do_assign_an_icon_I_can_only_see_a_portion_of_it.2C_is_there_a_way_to_fix_that.3F"> When I do assign an icon I can only see a portion of it, is there a way to fix that? </span></h3>
+    <p>Icons have to be a 32x32 png image with the same name as the executable, if they are larger than 32x32 you'll only see portion of it.
+    </p>
+    <h3> <span class="mw-headline" id="Where_do_i_get_the_poweroff.2C_reboot_and_main_scripts_.3F"> Where do i get the poweroff, reboot and main scripts&nbsp;? </span></h3>
+    <p><a href="http://users.telenet.be/IMS/dingoo/" class="external free" rel="nofollow">http://users.telenet.be/IMS/dingoo/</a> Do note for the shutdown to work you have to use a recent kernel (like the RTC one) and the usb cable must be unplugged
+    </p>
+    <h3> <span class="mw-headline" id="Can_i_use_both_dmenu_and_gmenu2x_.28or_another_menu.29_at_the_same_time_.3F"> Can i use both dmenu and gmenu2x (or another menu) at the same time&nbsp;? </span></h3>
+    <p>yes this is possible do it like this&nbsp;:
+    </p>
+    <ol>
+        <li> make 2 main scripts in sbin named main.gmenu2x and main.dmenu (they both contain the code to start the menu as if it was a main script)
+        </li>
+        <li> make another 2 (dge) scripts one named gmenu2x.dge and one named dmenu.dge
+        </li>
+        <li> in the gmenu2x.dge do a "rm /boot/local/sbin/main" and a "cp /boot/local/sbin/main.gmenu2x /boot/local/sbin/main"
+        </li>
+        <li> in the dmenu2x.dge do a "rm /boot/local/sbin/main" and a "cp /boot/local/sbin/main.demnu /boot/local/sbin/main"
+        </li>
+        <li> make an icon dmenu that links to gmenu2x.dge
+        </li>
+        <li> make an icon in gmenu2x that links to dmenu.dge
+        </li>
+        <li> do not forget to choose one menu as the default one (by copying the main file )
+        </li>
+    </ol>
+    <h3> <span class="mw-headline" id="Is_it_possible_to_add_icons_for_a_.22new_section.22_.3F_.28sections_.3D_the_icons_on_the_top_bar.29"> Is it possible to add icons for a "new section"&nbsp;? (sections = the icons on the top bar) </span></h3>
+    <p>This is possible by adding the corresponding icon with the same name as the section's directory/name plus the '.png' extension in the local\gmenu2x\skins\&lt;your current skin name&gt;\sections directory. For example if you created the "misc" section and you are using the "Default" skin, you have to place/save the icon as local\gmenu2x\skins\Default\sections\misc.png. These icons are also 32x32 pixels in size
+    </p>
+
+
+</body>
+<html>
