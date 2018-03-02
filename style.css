@@ -1,2 +1,8 @@
 body {
 }
+table#toc td, table.toc td {
+  padding: 1em;
+}
+table#toc, table.toc {
+  margin-bottom: 2em;
+}
