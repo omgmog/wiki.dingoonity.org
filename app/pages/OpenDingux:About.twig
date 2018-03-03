@@ -1,0 +1,119 @@
+{% extends 'base.twig' %}
+
+
+
+{% block content %}
+
+    <p>OpenDingux is a modern Linux distribution for the Dingoo A320, Dingoo A330, GCW-Zero. It uses standard Linux interfaces as much as possible, to make it easier to port software from/to OpenDingux.
+    </p>
+    <p>OpenDingux builds upon the work others, most importantly Ignacio Garcia Perez (booboo), who made the legacy Dingux kernel, and Lars-Peter Clausen (larsc), who wrote most of the drivers for Qi Hardware's Ben NanoNote, a device that is similar in hardware to the Dingoo.
+    </p>
+    <p>Please check the <a href="/{{ page.base }}?title=OpenDingux:FAQ" title="OpenDingux:FAQ">FAQ</a> if you have questions.
+    </p>
+    <p><br />
+    </p>
+    <table id="toc" class="toc">
+        <tr>
+            <td>
+                <div id="toctitle">
+                    <h2>Contents</h2>
+                </div>
+                <ul>
+                    <li class="toclevel-1 tocsection-1"><a href="#Download"><span class="tocnumber">1</span> <span class="toctext">Download</span></a></li>
+                    <li class="toclevel-1 tocsection-2"><a href="#OpenDingux_Components"><span class="tocnumber">2</span> <span class="toctext">OpenDingux Components</span></a>
+                        <ul>
+                            <li class="toclevel-2 tocsection-3"><a href="#Kernel"><span class="tocnumber">2.1</span> <span class="toctext">Kernel</span></a></li>
+                            <li class="toclevel-2 tocsection-4"><a href="#RootFS"><span class="tocnumber">2.2</span> <span class="toctext">RootFS</span></a></li>
+                            <li class="toclevel-2 tocsection-5"><a href="#Packed_applications"><span class="tocnumber">2.3</span> <span class="toctext">Packed applications</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="toclevel-1 tocsection-6"><a href="#Development"><span class="tocnumber">3</span> <span class="toctext">Development</span></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <script>
+        if (window.showTocToggle) {
+            var tocShowText = "show";
+            var tocHideText = "hide";
+            showTocToggle();
+        }
+    </script>
+    <h1> <span class="mw-headline" id="Download"> Download </span></h1>
+    <p>You can download OpenDingux from the <a href="http://www.treewalker.org/opendingux/" class="external text" rel="nofollow">OpenDingux Releases</a> page.
+    </p>
+    <p><br />
+    </p>
+    <h1> <span class="mw-headline" id="OpenDingux_Components"> OpenDingux Components </span></h1>
+    <p>This section describes the components that form the new OpenDingux Linux distribution for the Dingoo.
+    </p>
+    <p><br />
+    </p>
+    <h2> <span class="mw-headline" id="Kernel"> Kernel </span></h2>
+    <p>Currently in development. No official release yet!
+    </p>
+    <dl>
+        <dd>
+            <ul>
+                <li> kernel source repository at Qi Hardware (<a href="http://projects.qi-hardware.com/index.php/p/qi-kernel/" class="external free" rel="nofollow">http://projects.qi-hardware.com/index.php/p/qi-kernel/</a>)
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <p>Features:
+    </p>
+    <dl>
+        <dd>
+            <ul>
+                <li> RTC with Alarm feature (will wake up the dingoo if it's in suspend mode. Clock radio anyone?). <span style="color: red">new</span>
+                </li>
+                <li> TV-Out, without overclocking issues. It will power off the screen and the internal speakers as well.
+                </li>
+                <li> Swap-File support.
+                </li>
+                <li> NAND read support (readonly access to the 4GB internal memory of the dingoo), with autodetection of the NAND layout (1x4GB or 2x2GB are supported) <span style="color: red">new</span>
+                </li>
+                <li> zRAM (<a href="http://code.google.com/p/compcache/" class="external free" rel="nofollow">http://code.google.com/p/compcache/</a>) support <span style="color: red">new</span>
+                </li>
+                <li> Completely new audio driver, which now uses ALSA (OSS has been disabled) <span style="color: red">new</span>
+                </li>
+                <li> Completely new video driver, which supports double buffering <span style="color: red">new</span>
+                </li>
+                <li> CPUFreq to set clocking (to overclock)
+                </li>
+                <li> Watchdog driver (will reboot the dingoo after some time if the system crashed). <span style="color: red">new</span>
+                </li>
+                <li> Suspend/resume support. <span style="color: red">new</span>
+                </li>
+                <li> Autodetection of the memory size (one kernel for both A320 and A330). <span style="color: red">new</span>
+                </li>
+                <li> Support for the newer ILI9338 LCD panel. <span style="color: red">new</span>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <h2> <span class="mw-headline" id="RootFS"> RootFS </span></h2>
+    <p>This is the root file system: the file system mounted at /. It is stored in a file named "rootfs.bin". Currently the file system type is squashfs. The rootfs is being redone from scratch, using buildroot. Most of what was inside booboo's rootfs will be integrated, plus new things like python/pygame, some dev tools like nano, strace and file.
+    </p>
+    <p>The latest source can be found <a href="https://github.com/mthuurne/opendingux-buildroot" class="external text" rel="nofollow">on the github page</a>.
+    </p>
+    <p><br />
+    </p>
+    <h2> <span class="mw-headline" id="Packed_applications"> Packed applications </span></h2>
+    <dl>
+        <dd>
+            <ul>
+                <li> <b>GMenu2X</b> - Application Launcher (Qi version) Working version source can be downloaded and compiled from <a href="http://projects.qi-hardware.com/index.php/p/gmenu2x/" class="external text" rel="nofollow">the Qi-Hardware project page</a>. GMenu2X will be integrated inside the rootfs (no local/sbin/main thing anymore). It will be possible to change it to another launcher through a config file.
+                </li>
+                <li> <b>Power Switch Daemon</b> - It's the thing responsible for all the key shortcuts. Those can be configured on the file local/etc/pwswd.conf on your SD. The latest development version can be found <a href="https://github.com/pcercuei/pwswd" class="external text" rel="nofollow">on its github page</a>. See <a href="/{{ page.base }}?title=Dingux:OpenDingux:FAQ#What_are_the_default_shortcuts.3F" title="Dingux:OpenDingux:FAQ">the FAQ</a> for the key shortcuts available. An OSD is being worked on.
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <h1> <span class="mw-headline" id="Development"> Development </span></h1>
+    <p>See the <a href="/{{ page.base }}?title=OpenDingux:Development" title="OpenDingux:Development">OpenDingux Development page</a>.
+    </p>
+
+
+
+{% endblock %}

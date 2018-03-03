@@ -6,3 +6,6 @@ table#toc td, table.toc td {
 table#toc, table.toc {
   margin-bottom: 2em;
 }
+.mw-wiki-logo {
+  background-image: url(images/logo.png);
+}

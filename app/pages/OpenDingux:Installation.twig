@@ -1,0 +1,67 @@
+{% extends 'base.twig' %}
+
+
+
+{% block content %}
+
+    <p>In order to install OpenDingux on your Dingoo device, you'll need to have an SD card, the information about the LCD type that is used, and dual-boot setting enabled.
+    </p>
+    <table id="toc" class="toc">
+        <tr>
+            <td>
+                <div id="toctitle">
+                    <h2>Contents</h2>
+                </div>
+                <ul>
+                    <li class="toclevel-1 tocsection-1"><a href="#Discovering_the_type_of_your_LCD"><span class="tocnumber">1</span> <span class="toctext">Discovering the type of your LCD</span></a></li>
+                    <li class="toclevel-1 tocsection-2"><a href="#Creating_dual-boot_option"><span class="tocnumber">2</span> <span class="toctext">Creating dual-boot option</span></a></li>
+                    <li class="toclevel-1 tocsection-3"><a href="#Download_the_OpenDingux_files"><span class="tocnumber">3</span> <span class="toctext">Download the OpenDingux files</span></a></li>
+                    <li class="toclevel-1 tocsection-4"><a href="#Installation"><span class="tocnumber">4</span> <span class="toctext">Installation</span></a></li>
+                    <li class="toclevel-1 tocsection-5"><a href="#Starting_the_OpenDingux"><span class="tocnumber">5</span> <span class="toctext">Starting the OpenDingux</span></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <script>
+        if (window.showTocToggle) {
+            var tocShowText = "show";
+            var tocHideText = "hide";
+            showTocToggle();
+        }
+    </script>
+    <h2> <span class="mw-headline" id="Discovering_the_type_of_your_LCD"> Discovering the type of your LCD </span></h2>
+    <p>To discover the LCD type of your device, first of all start your Dingoo. Open the System setup menu. Inside the System setup menu, choose About entry. You will see some information about your device. Now type:
+    </p>
+    <pre>up, right, down, up, right, down</pre>
+    <p>After this you will see some information in the screen. For now, just pay attention to the LCD_MODULE parameter.
+    </p>
+    <p>At the end of the line, the LCD type will be showed like ILIXXXX. One example of this is ILI9325. Write this sequence in some place, you will need this information later.
+    </p>
+    <p><br />
+    </p>
+    <h2> <span class="mw-headline" id="Creating_dual-boot_option"> Creating dual-boot option </span></h2>
+    <p>To install OpenDingux we will need to enable the dual-boot option. The instructions are the same for both Dingux and OpenDingux and can be found <a href="http://wiki.dingoonity.org/{{ page.base }}?title=Dingux:About" class="external text" rel="nofollow">here</a>.
+    </p>
+    <p><br />
+    </p>
+    <h2> <span class="mw-headline" id="Download_the_OpenDingux_files"> Download the OpenDingux files </span></h2>
+    <p>Download from the <a href="http://www.treewalker.org/opendingux/" class="external text" rel="nofollow">OpenDingux page</a> the last released Root file system and the kernel for your LCD type (same information that we took before).
+    </p>
+    <p><br />
+    </p>
+    <h2> <span class="mw-headline" id="Installation"> Installation </span></h2>
+    <p>It's suggested that you format your SD card (as FAT32) before using it for the OpenDingux installation.
+    </p>
+    <p>After this, rename the kernel to zImage, and rename the root file system to rootfs.bin. Put both files in your SD card and insert SD card into your device.
+    </p>
+    <p><br />
+    </p>
+    <h2> <span class="mw-headline" id="Starting_the_OpenDingux"> Starting the OpenDingux </span></h2>
+    <p>Now you need to turn on your Dingoo device with the Select button pressed. An image will be showed, declaring that the OpenDingux is booting. It is! Your new OpenDingux is running!
+    </p>
+    <p>After this, you'll need to install some <a href="http://wiki.dingoonity.org/{{ page.base }}?title=OpenDingux:Applications" class="external text" rel="nofollow">applications</a>, <a href="http://wiki.dingoonity.org/{{ page.base }}?title=OpenDingux:Games" class="external text" rel="nofollow">games</a>, and <a href="http://wiki.dingoonity.org/{{ page.base }}?title=OpenDingux:Emulators" class="external text" rel="nofollow">emulators</a>
+    </p>
+
+
+
+{% endblock %}
