@@ -8,7 +8,7 @@
     $_file = 'Main_Page';
   }
   $rootPath = 'app/';
-  $file = 'pages/' . $_file . '.twig';
+  $file = 'pages/' . str_replace(':', '_', $_file) . '.twig';
   $model = array();
 
   $loader = new Twig_Loader_Filesystem($rootPath);
@@ -36,5 +36,7 @@
     );
     $file = '404.twig';
   }
-  echo $twig->render($file, $model);
+  
+  $pageRender = $twig->render($file, $model);
+  echo $pageRender;
 ?>
