@@ -1,0 +1,45 @@
+# Jekyll configuration for Dingoonity Wiki
+title: "Dingoonity Wiki"
+description: "A static backup of the old MediaWiki for the Dingoo community"
+baseurl: ""
+url: "https://wiki.dingoonity.org"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins (GitHub Pages supported)
+plugins:
+  - jekyll-redirect-from
+
+# Collections - treating pages as a collection to maintain URL structure
+collections:
+  pages:
+    output: true
+    permalink: /:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Exclude files from processing
+exclude:
+  - lib/
+  - app/
+  - index.php
+  - cache/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - migrate_to_jekyll.rb
+  - vendor/
+  - node_modules/
+  - .bundle/
+
+# Include files that start with underscores
+include:
+  - _pages

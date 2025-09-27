@@ -1,0 +1,33 @@
+---
+layout: page
+title: "Dingoonity Wiki"
+permalink: /
+---
+
+<script>
+// Handle legacy URL redirects
+(function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const title = urlParams.get('title');
+
+  if (title) {
+    // Redirect to the clean URL format
+    const cleanUrl = '/' + title + '/';
+    window.location.replace(cleanUrl);
+    return;
+  }
+
+  // If no title parameter, redirect to Main_Page
+  if (window.location.pathname === '/' && !title) {
+    window.location.replace('/Main_Page/');
+  }
+})();
+</script>
+
+<noscript>
+  <!-- Fallback for users without JavaScript -->
+  <meta http-equiv="refresh" content="0; url=/Main_Page/">
+</noscript>
+
+<!-- This content will be shown briefly while redirecting -->
+<p>Redirecting to main page...</p>
